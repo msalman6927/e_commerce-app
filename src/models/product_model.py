@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String, Float, DateTime, ForeignKey
 from sqlalchemy.orm import relationship
 from datetime import datetime
-from config.database import Base
+from src.config.database import Base
 
 class Products(Base):
     __tablename__ = "products"
@@ -12,7 +12,7 @@ class Products(Base):
     stock = Column(Integer, nullable=False, default=0)
     description = Column(String(500), nullable=True)
     category_id = Column(Integer, ForeignKey("categories.id", ondelete="CASCADE"), nullable=False)
-    created_at = Column(DateTime, default=datetime.utcnow)
+    created_at = Column(DateTime, default=datetime.now)
 
     # Relationships
     category = relationship("Categories", back_populates="products")

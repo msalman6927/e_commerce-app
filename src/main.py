@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from routes import auth_routes, product_routes  
+from routes import auth_routes, product_routes,category_routes, cart_routes
 # from models.user_model import Users
 # from models.category_model import Categories
 # from models.product_model import Products
@@ -13,8 +13,9 @@ app = FastAPI(
 
 # Saare routers register karein
 app.include_router(auth_routes.router)
-app.include_router(product_routes.router)  # Store router link ho gaya
-
+app.include_router(category_routes.router)
+app.include_router(product_routes.router)
+app.include_router(cart_routes.router)
 @app.get("/", tags=["Root"])
 def root():
     return {"message": "E-Commerce Store API is running smoothly!"}
