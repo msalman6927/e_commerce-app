@@ -16,3 +16,4 @@ class Products(Base):
 
     # Relationships
     category = relationship("Categories", back_populates="products")
+    order_items = relationship("OrderItems", back_populates="product")

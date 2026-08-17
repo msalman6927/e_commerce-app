@@ -16,7 +16,6 @@ class UserResponse(BaseModel):
     name: str
     email: EmailStr
     role: str
-    created_at: datetime
 
     class Config:
         from_attributes = True  # SQLAlchemy models se direct data parse karne ke liye

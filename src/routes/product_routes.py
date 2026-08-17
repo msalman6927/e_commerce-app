@@ -1,12 +1,12 @@
 from fastapi import APIRouter, Depends, HTTPException, status, Query
 from sqlalchemy.orm import Session
 from typing import Optional
-from config.database import get_db
-from models.product_model import Products
-from models.category_model import Categories
-from schemas.product_schema import ProductCreate, ProductUpdate, ProductResponse
-from utils.dependencies import check_admin_role
-from models.user_model import Users
+from src.config.database import get_db
+from src.models.product_model import Products
+from src.models.category_model import Categories
+from src.schemas.product_schema import ProductCreate, ProductUpdate, ProductResponse
+from src.utils.dependencies import check_admin_role
+from src.models.user_model import Users
 
 router = APIRouter(prefix="/products", tags=["Products"])
 

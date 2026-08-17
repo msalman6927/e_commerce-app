@@ -1,10 +1,10 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
-from config.database import get_db
-from models.category_model import Categories
-from schemas.product_schema import CategoryCreate, CategoryResponse
-from utils.dependencies import check_admin_role
-from models.user_model import Users
+from src.config.database import get_db
+from src.models.category_model import Categories
+from src.schemas.product_schema import CategoryCreate, CategoryResponse
+from src.utils.dependencies import check_admin_role
+from src.models.user_model import Users
 
 router = APIRouter(prefix="/categories", tags=["Categories"])
 

@@ -9,5 +9,7 @@ class Users(Base):
     email=Column(String(50),nullable=False,unique=True)
     password=Column(String(100),nullable=False) 
     orders=relationship("Orders",back_populates="customer")
+    role = Column(String(20), nullable=False, server_default="customer")  # ← yeh add karo
+
     
     

@@ -1,9 +1,10 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
-from config.database import get_db
-from models.user_model import Users
-from schemas.auth_schema import UserSignUp, UserLogin, UserResponse
-from utils.security import hash_password, verify_password, create_access_token
+from src.config.database import get_db
+from src.models.user_model import Users
+from src.models.order_model import Orders
+from src.schemas.auth_schema import UserSignUp, UserLogin, UserResponse
+from src.utils.security import hash_password, verify_password, create_access_token
 
 router = APIRouter(prefix="/auth", tags=["Authentication"])
 
@@ -17,16 +18,16 @@ def signup(user_data: UserSignUp, db: Session = Depends(get_db)):
             detail="Yeh email pehle se registered hai!"
         )
     
-    hashed_pwd = hash_password(user_data.password) [23]
+    hashed_pwd = hash_password(user_data.password) 
     new_user = Users(
         name=user_data.name,
         email=user_data.email,
         password=hashed_pwd,
         role="customer"  # Security Lock: Koi khud se admin role register nahi kar sakta!
     )
-    db.add(new_user) [24]
-    db.commit() [24]
-    db.refresh(new_user) [24]
+    db.add(new_user) 
+    db.commit() 
+    db.refresh(new_user) 
     return new_user
 
 @router.post("/login")
