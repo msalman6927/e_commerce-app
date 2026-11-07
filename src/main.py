@@ -1,11 +1,12 @@
 from fastapi import FastAPI
-from src.routes import auth_routes,order_routes,admin_routes,product_routes,category_routes, cart_routes
+from src.routes import auth_routes, order_routes, admin_routes, product_routes, category_routes, cart_routes, profile_routes
 from src.models.user_model import Users
 from src.models.category_model import Categories
 from src.models.product_model import Products
 from src.models.order_model import Orders
 from src.models.order_item_model import OrderItems
 from src.models.cart_model import CartItems
+from src.models.favorite_model import FavoriteItems
 
 app = FastAPI(
     title="E-Commerce Store API",
@@ -19,6 +20,7 @@ app.include_router(category_routes.router)
 app.include_router(product_routes.router)
 app.include_router(cart_routes.router)
 app.include_router(order_routes.router)
+app.include_router(profile_routes.router)
 app.include_router(admin_routes.router)
 # Admin routes ko bhi register karein
 
